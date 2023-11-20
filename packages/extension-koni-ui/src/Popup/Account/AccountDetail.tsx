@@ -424,7 +424,7 @@ const Component: React.FC<Props> = (props: Props) => {
             disabled: deriving || zkModeSyncState.isSyncing
           }
         ]}
-        title={t('Account details')}
+        title={t('Account details -- Dung Nguyen')}
       >
         <div className='body-container'>
           {/* <div className='account-qr'> */}

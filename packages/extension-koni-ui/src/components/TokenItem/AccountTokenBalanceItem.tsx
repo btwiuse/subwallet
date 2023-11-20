@@ -34,10 +34,14 @@ const Component: React.FC<Props> = (props: Props) => {
 
   const reformatedAddress = useMemo(() => reformatAddress(address, addressPrefix), [address, addressPrefix]);
 
+  // const name = useMemo(() => {
+  //   console.log("account",account);
+  //   return account?.name;
+  // }, [account?.name]);
   const name = useMemo(() => {
+    console.log('account', account);
     return account?.name;
-  }, [account?.name]);
-
+  }, [account]);
   const decimals = tokenInfo?.decimals || 0;
   const symbol = tokenInfo?.symbol || '';
 
@@ -62,7 +66,7 @@ const Component: React.FC<Props> = (props: Props) => {
                   ? (
                     <>
                       <span className='account-name'>{name}</span>
-                      <span className='account-address'>&nbsp;({toShort(reformatedAddress, 4, 4)})</span>
+                      <span className='account-address'>&nbsp;({toShort(reformatedAddress, 2, 2)})</span>
                     </>
                   )
                   : (
@@ -123,9 +127,9 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
       alignItems: 'center',
       fontSize: token.fontSizeHeading6,
       lineHeight: token.lineHeightHeading6,
-
       '.account-name-address': {
-        overflow: 'hidden',
+        overflow: 'visible',
+        whiteSpace: 'nowrap',
         textWrap: 'nowrap',
         display: 'flex',
         flexDirection: 'row'
@@ -134,7 +138,8 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
       '.account-name': {
         color: token.colorText,
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        paddingRight: 0
       },
 
       '.account-address': {
@@ -152,7 +157,9 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
 
       '.__value': {
         fontSize: token.fontSizeSM,
-        lineHeight: token.lineHeightSM
+        lineHeight: token.lineHeightSM,
+        marginLeft: 0,
+        overflow: 'visible'
       }
     }
   };

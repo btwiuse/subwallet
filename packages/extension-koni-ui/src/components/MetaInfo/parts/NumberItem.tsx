@@ -18,6 +18,9 @@ export interface NumberInfoItem extends Omit<InfoItemBase, 'valueColorSchema'> {
 
 const Component: React.FC<NumberInfoItem> = (props: NumberInfoItem) => {
   const { className, decimals = 0, label, suffix, value, valueColorSchema = 'default' } = props;
+  const value1 = 100000000000000000000000000000;
+  
+  console.log('value1', value1);
 
   return (
     <div className={CN(className, '__row -type-number')}>
@@ -28,20 +31,30 @@ const Component: React.FC<NumberInfoItem> = (props: NumberInfoItem) => {
       </div>
       <div className={'__col -to-right'}>
         <Number
-          className={`__number-item __value -schema-${valueColorSchema}`}
+          className={`__number-item __value -schema-${valueColorSchema} display-number`}
           decimal={decimals}
           decimalOpacity={1}
           intOpacity={1}
           suffix={suffix}
           unitOpacity={1}
-          value={value}
+          value={value1}
         />
+        {/* <Number
+          className={'display-number'}
+          decimal={decimals}
+          decimalOpacity={1}
+          intOpacity={1}
+          suffix={suffix}
+          unitOpacity={1}
+          value={value1}
+        /> */}
       </div>
     </div>
   );
 };
 
 const NumberItem = styled(Component)<NumberInfoItem>(({ theme: { token } }: NumberInfoItem) => {
+  
   return {};
 });
 
