@@ -34,14 +34,10 @@ const Component: React.FC<Props> = (props: Props) => {
 
   const reformatedAddress = useMemo(() => reformatAddress(address, addressPrefix), [address, addressPrefix]);
 
-  // const name = useMemo(() => {
-  //   console.log("account",account);
-  //   return account?.name;
-  // }, [account?.name]);
   const name = useMemo(() => {
-    console.log('account', account);
+    console.log("account",account);
     return account?.name;
-  }, [account]);
+  }, [account?.name]);
   const decimals = tokenInfo?.decimals || 0;
   const symbol = tokenInfo?.symbol || '';
 
@@ -66,7 +62,7 @@ const Component: React.FC<Props> = (props: Props) => {
                   ? (
                     <>
                       <span className='account-name'>{name}</span>
-                      <span className='account-address'>&nbsp;({toShort(reformatedAddress, 2, 2)})</span>
+                      <span className='account-address'>&nbsp;({toShort(reformatedAddress, 4, 4)})</span>
                     </>
                   )
                   : (
@@ -128,8 +124,7 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
       fontSize: token.fontSizeHeading6,
       lineHeight: token.lineHeightHeading6,
       '.account-name-address': {
-        overflow: 'visible',
-        whiteSpace: 'nowrap',
+        overflow: 'hidden',
         textWrap: 'nowrap',
         display: 'flex',
         flexDirection: 'row'
@@ -138,8 +133,7 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
       '.account-name': {
         color: token.colorText,
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        paddingRight: 0
+        textOverflow: 'ellipsis'
       },
 
       '.account-address': {
@@ -157,9 +151,7 @@ const AccountTokenBalanceItem = styled(Component)<Props>(({ theme: { token } }: 
 
       '.__value': {
         fontSize: token.fontSizeSM,
-        lineHeight: token.lineHeightSM,
-        marginLeft: 0,
-        overflow: 'visible'
+        lineHeight: token.lineHeightSM
       }
     }
   };
