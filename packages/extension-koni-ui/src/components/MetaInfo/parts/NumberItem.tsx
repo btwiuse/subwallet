@@ -28,7 +28,7 @@ const Component: React.FC<NumberInfoItem> = (props: NumberInfoItem) => {
       </div>
       <div className={'__col -to-right'}>
         <Number
-          className={`__number-item __value -schema-${valueColorSchema} display-number`}
+          className={`__number-item __value -schema-${valueColorSchema}`}
           decimal={decimals}
           decimalOpacity={1}
           intOpacity={1}
